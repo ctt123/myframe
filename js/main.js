@@ -7,10 +7,16 @@ require.config({
         "bootstrapJs":"bootstrap",
         "index":"index",
         "angular":"angular",
+        "ui-router":"lib/angular/angular-ui-router",
+        "route-config":"route-config",
+        "jquery":"jquery-1.10.2"
 
     }
 })
-require(["index"],function(){
+require(["index"],function(index){
 
+    $(document).ready(function(){
+        $.bootstrap(document,[index.name])
+    })
 
 })
