@@ -5,8 +5,8 @@ define([ "jquery" ], function() {
 		defaultUrl : "/home",
 		states : {
 			"frame" : {
-				templateUrl : "view/banner.html"
-                // pendencies : [ "js/controllers/LoginController" ]de
+				templateUrl : "view/banner.html",
+                pendencies : ""
 			}
 
 			//#################XURH add end######################
