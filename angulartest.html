@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/angular.js">
+     </script>
+    <script>
+        var app = angular.module('app', []);
+        app.directive('hello',function() {
+            return{
+                restrict:'E',
+                template:'<div ng-show="myshow">Hi there<span ng-transclude></span></div>',
+                transclude:true,
+                link:function(scope,element,attrs) {
+                    scope.myshow=true;
+                }
+            }
+        })
+        app.controller('MyController',function($scope,people){
+            $scope.things = [1, 2, 3, 4, 5, 6];
+            people.name="haha";
+            alert(people.name)
+        })
+//        app.service("people",function(){
+//
+//            this.name="小李子";
+//            this.getname=function(){
+//                return this.name;
+//            }
+//        })
+            app.config(function($provide) {
+                $provide.service("people",function(){
+                    this.name="小李子";
+                    this.getname=function(){
+                        return this.name;
+                    }
+                })
+            })
+
+
+
+
+    </script>
+
+</head>
+<body ng-app="app" ng-controller="MyController">
+    <div ng-repeat="thing in things">
+        {{thing}}.<hello></hello>
+    </div>
+    <hello>
+        <span>原始的内容</span>
+        <span>还会在这里</span>
+    </hello>
+     <hello></hello>
+
+</body>
+</html>
+

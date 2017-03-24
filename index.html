@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,17 +10,18 @@
     <!--<script src="js/angular.js"></script>-->
     <!--<script src="js/lib/angular/angular-ui-router.js"></script>-->
 </head>
-<body ng-app="myApp" ng-controller="myCon">
-<header class="container" >
+<body ng-controller="myCon">
+<header class="container">
     <ul class="nav  nav-justified">
-        <li class="col-xs-3"><a href="">首页</a></li>
+        <li class="col-xs-3"><a ui-sref="index">首页</a></li>
         <li class="col-xs-3"><a href="">二手</a></li>
         <li class="col-xs-3"><a href="">交换</a></li>
         <li class="col-xs-3"><a href="">活动</a></li>
 
     </ul>
 </header>
-<section class="c-content" data-ui-view>
+<div>{{5+5}}</div>
+<section class="c-content" ui-view >
 
 </section>
 

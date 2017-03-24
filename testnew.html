@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="s9.app">
+<head>
+    <meta charset="UTF-8">
+    <title>简单的例子：基础路由</title>
+    <!--<script src="js/jquery-1.10.2.js"></script>-->
+    <script src="js/angular.js"></script>
+    <script src="js/lib/angular/angular-ui-router.js"></script>
+    <style>
+        .content{
+            margin: 10px;
+            border-top:1px solid silver;
+        }
+        .view{
+            border:1px solid orange;
+            min-height: 300px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+当前页面状态：{{getCurrentState()}}
+<div class="nav">
+    <a ui-sref="index">index</a>
+    <a ui-sref="about">about</a>
+    <a ui-sref="detail({id:1,name:'张三'})">detail</a>  //这个是带参数的路由
+</div>
+<div class="content">
+    <div>ui-view:</div>
+    <div class="view" ui-view></div>
+</div>
+<script>
+
+    /**
+     * Created by GlassTea on 2016/9/24 0024.
+     */
+    angular.module('s9.app', ['ui.router'])
+        .config(function ($stateProvider, $urlRouterProvider) {
+            $stateProvider
+                .state('index', {    　　　　　　　　　　　　//路由匹配规则
+                    url: '/index',
+                    template: '<div>msg from index page: {{data.msg}}</div>',
+                    controller: function ($scope) {
+                        var data = $scope.data = {};
+                        data.msg = 'hello, this is index page.'
+                    }
+                })
+                .state('about', {
+                    url: '/about/',
+                    template: '<div>msg from about page: {{data.msg}}</div>',
+                    controller: function ($scope) {
+                        var data = $scope.data = {};
+                        data.msg = 'hello, this is about page.'
+                    }
+                })
+                .state('detail', {
+                    url: '/page1.html',
+//                    template: '<div>msg from detail page: {{data.msg}}</div>',
+                    templateUrl : "page1.html",
+                    controller: function ($scope, $stateParams) {
+                        var data = $scope.data = {};
+                        data.msg = $stateParams;
+                    }
+                })
+                   $urlRouterProvider.otherwise('/index');   //没有配置的状态就可以跳到 ‘/index’状态
+        })
+//        .run(function ($rootScope, $state, $stateParams) {
+//            window.getState = function () {
+//                return $state;
+//            };
+//            window.getStateParams = function () {
+//                return $stateParams;
+//            };
+//        });
+</script>
+</body>
+</html>

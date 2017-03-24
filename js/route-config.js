@@ -1,12 +1,11 @@
 define([ "jquery" ], function() {
 	var menuTree = null;
-
+	alert(1)
 	var result = {
 		defaultUrl : "/home",
 		states : {
 			"frame" : {
-				templateUrl : "view/banner.html",
-                pendencies : ""
+				templateUrl : "view/banner.html"
 			}
 
 			//#################XURH add end######################

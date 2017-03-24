@@ -8,24 +8,31 @@ require.config({
         "index":"index",
         "angular":"angular",
         "ui-router":"lib/angular/angular-ui-router",
+        "route":"lib/angular/angular-router",
         "route-config":"route-config",
         "jquery":"jquery-1.10.2",
         "test":"test"
+
         // "app":"app"
 
     },
     shim : {
+        "app":["angular"],
+        "ui-router":["angular"],
         "angular": {
             "deps": ["jquery"],
             "exports": "angular"
         }
     }
-})
-require(["app","test"],function(people){
+});
+require(["app","test"],function(app){
     //1.此时function中的参数可写可不写.2.require,define里面的[],既是执行了一遍里面的js文件.3.既然是执行文件应该是一步一步来吧，但是requirejs是异步加载
-     alert(people.name)
+    //  alert(myApp.name)
+    //  alert(a.name)
     // $(document).ready(function(){
-    //     angular.bootstrap(document,[app.name])
+    //     alert('1');
+    //     angular.bootstrap(document,[app.name]);
+    //     alert('2');
     // })
 
-})
+});
